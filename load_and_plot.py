@@ -11,7 +11,7 @@ import pickle
 
 
 def load_var(Mnum, Mstar):
-    #此函数用于读取保存的.bin数据文件
+    # loading .bin data
 
     load_file = open("C:/Users/ZS/Desktop/毕设/result/10^" + str(Mnum) + '/' + str(Mstar) + "/save.bin", "rb")
     efficiency_array = pickle.load(load_file)  # 顺序导出变量
@@ -40,7 +40,7 @@ def load_var(Mnum, Mstar):
             'L_3500_dm': L_3500_dm, 'L_1000_dm': L_1000_dm, 'Mstar': Mstar, 't_range': t_range, 't_max': t_max,
             'dm_range': dm_range, 'dm_range_str': dm_range_str}
 
-#以下代码块将读取到的数据赋予变量
+# distribute data to variables
 
 data =load_var(7,10.0)
 efficiency_array=data['efficiency_array']
@@ -73,7 +73,7 @@ dmc = 1.7 * 10 ** 17 * (M / M0)
 tmin = Mstar / 3000 / dmc
 
 def fig2():
-    #此函数用于绘制毕设中的4张图像
+    # plotting 4 figures in the thesis
 
     picture_1 = plt.figure(figsize=(10, 10))
     plt.subplot(2, 2, 1)

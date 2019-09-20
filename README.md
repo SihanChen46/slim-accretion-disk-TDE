@@ -1,5 +1,5 @@
 # slim-accretion-disk-TDE
-Code for my undergraduate thesis: Tidal disruption events with Super-Eddington accretion disk around blackholes
+Code for my undergraduate thesis: Tidal disruption events with Super-Eddington accretion disk around blackholes.
 
 My first project written in Python, poorly maintainable code, but hopefully someone find it useful.
 

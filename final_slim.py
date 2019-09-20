@@ -4,16 +4,16 @@ from scipy.integrate import odeint, trapz, simps
 from scipy.optimize import fsolve
 from math import factorial, pi
 import pickle
-# 常数定义
+
 def go(dm,Mnum):
-    #将go定义在一个函数中，方便重复调用（计算不同的吸积率和黑洞质量）
+    # make this go function for convenience of repeating for different accretion rates and mass of black holes
     import numpy as np
     import matplotlib.pyplot as plt
     from scipy.integrate import odeint, trapz, simps
     from scipy.optimize import fsolve
     from math import factorial, pi
 
-    # 求表面温度
+    # solving surface temperature
 
     def Bv_Ts(miu, Ts):
         result = 4 * pi * (2 * planck * miu ** 3) / (c ** 2) / (np.exp(planck * miu / kb / Ts) - 1)
@@ -47,7 +47,7 @@ def go(dm,Mnum):
                 print(i)
         return np.array(result)
 
-    # 求各种能量
+    # solving all kings of energy
 
     def Egrav():
         Eg_released = []
@@ -71,7 +71,7 @@ def go(dm,Mnum):
                                        [r_sorted_array[i] * rg, r_sorted_array[i + 1] * rg]))
         return Erad_released
 
-    # 绘图
+    # plottings
 
     def fig():
         plt.subplot(2, 2, 1)
@@ -89,7 +89,7 @@ def go(dm,Mnum):
         plt.loglog(r_array, np.array(H_array) / np.array(r_array) / rg, marker='.', linestyle='')
         plt.ylabel('H/r')
 
-    # 求辐射
+    # solving radiation
     def Bv(miu):
         result = 4 * pi * (2 * planck * miu ** 3) / (c ** 2) / (np.exp(planck * miu / kb / T_sorted_array) - 1)
         return result
@@ -119,7 +119,7 @@ def go(dm,Mnum):
                     planck ** 3) / c / c, r_sorted_array * rg)
         return result * 2
 
-    # 求解龙格库塔
+    # implementation of Runge-Kutta
 
     def qiu_T(x, a, b, c):
         ansT = a * x ** 4 + b * x + c
@@ -218,7 +218,7 @@ def go(dm,Mnum):
 
         return l_yita
 
-    # 常数定义
+    # physical constants
 
     kb = 1.3806505 * 10 ** (-16)
     planck = 6.62606896 * 10 ** (-27)
@@ -243,7 +243,7 @@ def go(dm,Mnum):
 
     while ((firstflag == 0) | (min(r_v_vs_array_sorted)[0] > 3) | (min(r_v_vs_array_sorted)[1] < 1)):
 
-        # 可变参数调节
+        # changable parameters
 
         #Mnum = 10000000
         #dm = 100
@@ -254,13 +254,13 @@ def go(dm,Mnum):
         elif (maxflag == 1 & minflag == 1):
             lin = (lin_max + lin_min) / 2
 
-        # 参数定义
+        # parameters
 
         M = Mnum * M0
         rg = 2 * G * M / (c ** 2)
         dmc = 1.7 * 10 ** 17 * (M / M0)
 
-        # 结果记录
+        # record of computation
 
         r_array = []
         l_c_rg_array = []
@@ -280,7 +280,7 @@ def go(dm,Mnum):
         sigma_array = []
         Fz_array = []
 
-        # 边界值定义
+        # boundary conditions
 
         N = 3
         IN = ((2 ** N * factorial(N)) ** 2) / (factorial(2 * N + 1))
@@ -396,7 +396,7 @@ L_1000_dm = []
 L_3_dm = []
 L_0_5_dm = []
 
-# 常数设定
+# constant
 G = 6.67259 * 10 ** (-8)
 c = 3 * 10 ** 10
 M0 = 1.9891 * 10 ** 33
@@ -405,7 +405,7 @@ M = Mnum * M0
 rg = 2 * G * M / (c ** 2)
 dmc = 1.7 * 10 ** 17 * (M / M0)
 
-# 可变参数
+# changable parameters
 
 
 Mstar = 50 * 1.9891 * 10 ** 33
@@ -422,7 +422,7 @@ t_range = np.logspace(np.log10(tmin), np.log10(t_max),14)
 dm_range = (t_range/tmin)**(-5/3) *1000
 #dm_range = np.logspace(-3,3,7)
 
-# 撕碎的恒星质量 1
+# assume that mass of disrupted star is 1
 
 # dm_range = np.linspace(-3,3,18)
 # dm_range = 10**dm_range
@@ -619,7 +619,7 @@ if not os.path.exists("C:/Users/ZS/Desktop/毕设/result/10^"+str(int(np.log10(M
 
 
 def save_var():
-    #顺序存入变量
+    # saving result
     save_file = open("C:/Users/ZS/Desktop/毕设/result/10^"+str(int(np.log10(Mnum_dm)))+ '/'+str(Mstar/(1.9891 * 10 ** 33))+"/save.bin","wb")
     pickle.dump(efficiency_array,save_file)
     pickle.dump(r_dm,save_file)
@@ -647,7 +647,7 @@ def save_var():
 
 
 def load_var(Mnum, Mstar):
-    # 顺序导出变量
+    # load result
     load_file = open("C:/Users/ZS/Desktop/毕设/result/10^" + str(Mnum) + '/' + str(Mstar) + "/save.bin", "rb")
     efficiency_array = pickle.load(load_file)  
     r_dm = pickle.load(load_file)
