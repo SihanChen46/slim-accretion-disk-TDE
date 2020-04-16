@@ -8,4 +8,8 @@ At the beginning of the tidal disruption, the fallback rate of debris can be ver
 Key Words：supermassive blackholes; accretion disks; slim; tidal disruption events
 
 Some results:
-![Some results](https://github.com/SihanChen46/slim-accretion-disk-TDE/blob/master/imgs/img1.png)
+![Some results](https://github.com/SihanChen46/slim-accretion-disk-TDE/blob/master/imgs/img1%204.11.39%20PM.png)
+![Some results](https://github.com/SihanChen46/slim-accretion-disk-TDE/blob/master/imgs/img2%204.11.39%20PM.png)
+![Some results](https://github.com/SihanChen46/slim-accretion-disk-TDE/blob/master/imgs/img3%204.11.39%20PM.png)
+![Some results](https://github.com/SihanChen46/slim-accretion-disk-TDE/blob/master/imgs/img4%204.11.39%20PM.png)
+![Some results](https://github.com/SihanChen46/slim-accretion-disk-TDE/blob/master/imgs/img5%204.11.39%20PM.png)
